@@ -1,5 +1,5 @@
-const { FusesPlugin } = require('@electron-forge/plugin-fuses');
-const { FuseV1Options, FuseVersion } = require('@electron/fuses');
+const { FusesPlugin } = require("@electron-forge/plugin-fuses");
+const { FuseV1Options, FuseVersion } = require("@electron/fuses");
 
 module.exports = {
   packagerConfig: {
@@ -8,45 +8,45 @@ module.exports = {
   rebuildConfig: {},
   makers: [
     {
-      name: '@electron-forge/maker-squirrel',
+      name: "@electron-forge/maker-squirrel",
       config: {},
     },
     {
-      name: '@electron-forge/maker-zip',
-      platforms: ['darwin'],
+      name: "@electron-forge/maker-zip",
+      platforms: ["darwin"],
     },
     {
-      name: '@electron-forge/maker-deb',
+      name: "@electron-forge/maker-deb",
       config: {},
     },
     {
-      name: '@electron-forge/maker-rpm',
+      name: "@electron-forge/maker-rpm",
       config: {},
     },
   ],
   plugins: [
     {
-      name: '@electron-forge/plugin-vite',
+      name: "@electron-forge/plugin-vite",
       config: {
         // `build` can specify multiple entry builds, which can be Main process, Preload scripts, Worker process, etc.
         // If you are familiar with Vite configuration, it will look really familiar.
         build: [
           {
             // `entry` is just an alias for `build.lib.entry` in the corresponding file of `config`.
-            entry: 'src/main.ts',
-            config: 'vite.main.config.ts',
-            target: 'main',
+            entry: "main/index.ts",
+            config: "vite.main.config.ts",
+            target: "main",
           },
           {
-            entry: 'src/preload.ts',
-            config: 'vite.preload.config.ts',
-            target: 'preload',
+            entry: "preload.ts",
+            config: "vite.preload.config.ts",
+            target: "preload",
           },
         ],
         renderer: [
           {
-            name: 'main_window',
-            config: 'vite.renderer.config.ts',
+            name: "main_window",
+            config: "vite.renderer.config.ts",
           },
         ],
       },
