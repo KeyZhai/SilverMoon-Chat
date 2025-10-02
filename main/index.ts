@@ -13,18 +13,26 @@ const createWindow = () => {
     width: 1024,
     height: 800,
     webPreferences: {
-      preload: path.join(__dirname, "preload.ts"),
+      preload: path.join(__dirname, "preload.js"),
     },
   });
 
   // and load the index.html of the app.
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
-    mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
+    mainWindow.loadURL(`${MAIN_WINDOW_VITE_DEV_SERVER_URL}/html/index.html`);
   } else {
     mainWindow.loadFile(
-      path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`)
+      path.join(
+        __dirname,
+        `../renderer/${MAIN_WINDOW_VITE_NAME}/html/index.html`
+      )
     );
   }
+
+  // 当页面准备好后再显示窗口
+  mainWindow.webContents.on("did-finish-load", () => {
+    mainWindow.show();
+  });
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();

@@ -36,6 +36,10 @@
     "src/**/*.d.ts",
     "renderer/App.vue",
     "main/index.ts",
-    "preload.ts"
+    "preload.ts",
+    "types/**/*.d.ts",
+    "renderer/**/*.ts",
+    "renderer/**/*.vue",
+    "locales/**/*.json"
   ]
 }

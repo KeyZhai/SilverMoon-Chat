@@ -14,7 +14,8 @@
       "@common/*": ["common/*"],
       "@renderer/*": ["renderer/*"],
       "@main/*": ["main/*"],
-      "@config/*": ["config/*"]
+      "@config/*": ["config/*"],
+      "@locales/*": ["locales/*"]
     }
   }
 }
