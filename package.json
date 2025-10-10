@@ -38,6 +38,8 @@
     "vite": "^6.0.0"
   },
   "dependencies": {
+    "@iconify-json/material-symbols": "^1.2.29",
+    "@iconify/vue": "^5.0.0",
     "@vueuse/core": "^13.9.0",
     "electron-squirrel-startup": "^1.0.1",
     "pinia": "^3.0.3",
