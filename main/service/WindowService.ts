@@ -44,6 +44,7 @@ class WindowService {
 
   private _setupIpcEvents() {
     const handleCloseWindow = (e: IpcMainEvent) => {
+      //BrowserWindow.fromWebContents(e.sender) 获取发送事件的窗口实例
       this.close(BrowserWindow.fromWebContents(e.sender));
     };
     const handleMinimizeWindow = (e: IpcMainEvent) => {

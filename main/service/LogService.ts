@@ -4,7 +4,13 @@ import { app, ipcMain } from "electron";
 import log from "electron-log";
 import * as path from "path";
 import * as fs from "fs";
-
+// 转换为Promise形式的fs方法
+//读取目录内容
+const readdirAsync = promisify(fs.readdir);
+//读取文件信息
+const statAsync = promisify(fs.stat);
+//删除文件
+const unlinkAsync = promisify(fs.unlink);
 class LogService {
   private static _instance: LogService;
 
@@ -18,7 +24,7 @@ class LogService {
         fs.mkdirSync(logPath, { recursive: true });
       }
     } catch (err) {
-      console.error("Failed to create log directory", err);
+      this.error("Failed to create log directory", err);
     }
 
     log.transports.file.resolvePathFn = () => {
@@ -42,6 +48,42 @@ class LogService {
 
     //配置文件日志级别
     log.transports.file.level = "debug";
+  }
+
+  /**
+   * 记录调试信息
+   * @param {string} message - 日志消息
+   * @param {any[]} meta - 附加的元数据
+   */
+  public debug(message: string, ...meta: any[]): void {
+    log.debug(message, ...meta);
+  }
+
+  /**
+   * 记录一般信息
+   * @param {string} message - 日志消息
+   * @param {any[]} meta - 附加的元数据
+   */
+  public info(message: string, ...meta: any[]): void {
+    log.info(message, ...meta);
+  }
+
+  /**
+   * 记录警告信息
+   * @param {string} message - 日志消息
+   * @param {any[]} meta - 附加的元数据
+   */
+  public warn(message: string, ...meta: any[]): void {
+    log.warn(message, ...meta);
+  }
+
+  /**
+   * 记录错误信息
+   * @param {string} message - 日志消息
+   * @param {any[]} meta - 附加的元数据，通常是错误对象
+   */
+  public error(message: string, ...meta: any[]): void {
+    log.error(message, ...meta);
   }
 
   public static getInstance(): LogService {
