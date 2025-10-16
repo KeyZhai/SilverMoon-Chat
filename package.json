@@ -1,6 +1,6 @@
 {
-  "name": "electron-demo",
-  "productName": "electron-demo",
+  "name": "silvermoon",
+  "productName": "silvermoon",
   "version": "1.0.0",
   "description": "My Electron application description",
   "main": ".vite/build/index.js",
@@ -12,8 +12,8 @@
   },
   "keywords": [],
   "author": {
-    "name": "EricWXY",
-    "email": "ericwxy@foxmail.com"
+    "name": "changhaoZhai",
+    "email": "rostreetai2041@gmail.com"
   },
   "license": "MIT",
   "devDependencies": {
@@ -41,6 +41,7 @@
     "@iconify-json/material-symbols": "^1.2.29",
     "@iconify/vue": "^5.0.0",
     "@vueuse/core": "^13.9.0",
+    "electron-log": "^5.4.3",
     "electron-squirrel-startup": "^1.0.1",
     "pinia": "^3.0.3",
     "vfonts": "^0.0.3",
